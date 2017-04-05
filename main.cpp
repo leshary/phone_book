@@ -32,7 +32,9 @@ public:
     }
     void dell ( string name )
     {
-       delete find1 ( name );
+        key* x =  find1 ( name );
+        book.erase( find1 ( name ) );
+        delete x;
     }
     void prin_all ()
     {
@@ -54,6 +56,9 @@ public:
         phone_book () {}
 ~phone_book ()
         {
+        for ( set<key*>::iterator it = book.begin(); it!=book.end(); it++){
+            delete *it;
+        }
            book.clear();
         }
    };
